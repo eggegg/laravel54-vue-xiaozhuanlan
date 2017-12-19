@@ -41,11 +41,19 @@ Vue.component('video-thumb', require('./components/VideoThumb.vue'));
  */
 import VueProgressBar from 'vue-progressbar';
 
+
 Vue.use(VueProgressBar, {
     color: '#ce1126',
     failedColor: 'red',
     height: '2px'
 });
+
+
+/**
+ * markdown editor
+ */
+import VueSimplemde from 'vue-simplemde';
+Vue.use(VueSimplemde);
 
 import router from './routes';
 

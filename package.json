@@ -20,7 +20,9 @@
   },
   "dependencies": {
     "cross-env": "^5.1.1",
+    "marked": "^0.3.7",
     "vue-progressbar": "^0.7.3",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-simplemde": "^0.4.6"
   }
 }

@@ -1,8 +1,8 @@
 <template>
     <div class="container">
-        <div class="row">
+        <div class="">
             <!-- Main content -->
-            <div class="col-md-7">
+            <div class="" style="width:660px;margin: 0 auto;overflow: hidden;">
                 <div class="video-player">
                     <div v-if="youtubeId" class="videoWrapper">
                         <iframe width="560" height="349" :src="'http://www.youtube.com/embed/' + youtubeId + '?rel=0&hd=1&autoplay=1&showinfo=0'" frameborder="0" allowfullscreen></iframe>
@@ -64,7 +64,10 @@
                     <div class="panel-body">
                         <h5 class="text-dark">Published on {{ video.updated_at }}</h5>
 
-                        <div class="desc-text"><p>{{ video.description }}</p></div>
+                        <!--<div class="desc-text"><p>{{ video.description }}</p></div>-->
+                        <div class="desc-text">
+                            <div class="markdown" v-html="video.description_html"></div>
+                        </div>
                         <h5 class="text-dark">Category <a href="">{{ video.category.name }}</a></h5>
                     </div>
                 </div>
@@ -145,40 +148,17 @@
             </div>
             <!-- End Main Content -->
 
-            <!-- Aside content -->
-            <div class="col-md-5">
-                <div class="panel panel-default">
-                    <div class="panel-body video-aside">
-                        <div class="media" v-for="related in video.related">
-                            <div class="media-left">
-                                <router-link :to="{ name: 'VideoDetailPage', params: { id: related.id, slug: $root.slug(related.title) }}">
-                                    <img class="media-object" :src="related.thumbnail" :alt="related.title">
-                                </router-link>
-                            </div>
-                            <div class="media-body">
-                                <h3 class="media-heading">
-                                    <router-link :to="{ name: 'VideoDetailPage', params: { id: related.id, slug: $root.slug(related.title) }}">
-                                        {{ related.title }}
-                                    </router-link>
-                                </h3>
-                                <p>
-                                    <router-link :to="{ name: 'ChannelPage', params: {id: related.channel_id, slug: $root.slug(related.channel.name)}}">
-                                        {{ related.channel.name }}
-                                    </router-link> <br>
-                                    {{ related.views }} views &bull; {{ related.created_at }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Aside content -->
         </div>
     </div>
 </template>
 
 <script>
+    import { markdownEditor } from 'vue-simplemde'
+
     export default {
+        components:{
+            markdownEditor
+        },
         props: ['id', 'slug'],
         data() {
           return {
@@ -189,8 +169,7 @@
                   },
                   category: {
 
-                  },
-                  related: []
+                  }
               },
               comments: {
                   data: []
@@ -201,7 +180,6 @@
               youtubeId: false
           }
         },
-
         watch: {
             '$route' (to, from) {
                 this.getVideo();
@@ -218,20 +196,19 @@
         methods: {
             getVideo() {
                 this.$Progress.start();
-                axios.get('/api/posts/' + this.id + '?related=true' ).then((res) => {
+                axios.get('/api/posts/' + this.id).then((res) => {
                     this.$Progress.finish();
                     this.video = res.data;
-
-                    // set the youtube id if its youtube video
-                    this.youtubeId = this.isYoutube(this.video.url);
-
+                    this.video.description_html = this.parse(this.video.description)
                     // change the title of page
                     window.document.title = this.video.title;
                 }).catch((err) => {
                     this.$Progress.finish();
                 });
             },
-
+            parse(html) {
+                return marked(html)
+            },
             videoThumb(thumb) {
               return "http://lorempixel.com/660/366/?" + this.video.id
             },
@@ -283,15 +260,6 @@
                         vm.$Progress.finish();
                     });
                 }
-            },
-
-            isYoutube(url) {
-                let pattern = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
-                let matches = url.match(pattern);
-                if(matches){
-                    return matches[1];
-                }
-                return false;
             }
         }
     }

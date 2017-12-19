@@ -11,7 +11,7 @@
                         <p class="alert text-center alert-warning"></p>
 
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-12">
                                 <form method="post" @submit.prevent="uploadVideo()" class="form-horizontal">
 
                                     <div class="form-group">
@@ -26,9 +26,10 @@
                                     <div class="form-group">
                                         <label for="url" class="col-sm-2 control-label">Video URL</label>
                                         <div class="col-sm-10">
-                                            <input v-model="video.url" @blur="validateYoutubeUrl()" required type="url" class="form-control" id="url" placeholder="YouTube video url">
+                                            <input v-model="video.url"  required type="url" class="form-control" id="url" placeholder="YouTube video url">
                                         </div>
                                     </div>
+
 
                                     <div class="form-group">
                                         <label for="title" class="col-sm-2 control-label">Title</label>
@@ -40,7 +41,8 @@
                                     <div class="form-group">
                                         <label for="desc" class="col-sm-2 control-label">Description</label>
                                         <div class="col-sm-10">
-                                            <textarea v-model="video.description" minlength="10" required class="form-control" id="desc" placeholder="Description for video"></textarea>
+                                            <markdown-editor v-model="video.description" ref="markdownEditor"></markdown-editor>
+                                            <!--<textarea v-model="video.description" minlength="10" required class="form-control" id="desc" placeholder="Description for video"></textarea>-->
                                         </div>
                                     </div>
 
@@ -54,11 +56,6 @@
                                     </div>
                                 </form>
                             </div>
-                            <!-- End Video upload form -->
-
-                            <div class="col-md-4">
-                                <img class="img-responsive" :src="videoThumb" alt="">
-                            </div>
                             <!-- End Video thumb preview -->
                         </div>
                     </div>
@@ -71,13 +68,22 @@
 </template>
 
 <script>
+    import { markdownEditor } from 'vue-simplemde'
+
     export default {
+        components: {
+            markdownEditor
+        },
         data() {
             return {
+                image:'',
                 video: {},
                 categories: [],
                 loading: false,
-                videoThumb: '/img/video-thumb-placeholder.png'
+                videoThumb: 'https://lorempixel.com/640/480/?68687',
+                configs: {
+                    spellChecker: false // 禁用拼写检查
+                }
             }
         },
 
@@ -119,23 +125,6 @@
                 });
             },
 
-            validateYoutubeUrl() {
-              let videoCode = this.isYoutube(this.video.url);
-              if ( videoCode ) {
-                  this.videoThumb = 'http://img.youtube.com/vi/'+ videoCode +'/mqdefault.jpg';
-              } else {
-                  alert('URL is not a valid youtube video url.');
-              }
-            },
-
-            isYoutube(url) {
-                let pattern = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
-                let matches = url.match(pattern);
-                if(matches){
-                    return matches[1];
-                }
-                return false;
-            },
         }
     }
 </script>

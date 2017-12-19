@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode(['csrfToken' => csrf_token()]) !!};
