@@ -23,11 +23,11 @@
                     </div>
 
                     <div class="panel-heading">
-                        Recent Videos
+                        Recent Posts
                     </div>
 
                     <div class="panel-body">
-                        <video-thumb :list="channel.videos.data"></video-thumb>
+                        <video-thumb :list="channel.posts.data"></video-thumb>
                     </div>
 
                     <div class="panel-heading">
@@ -53,7 +53,7 @@
                 channel: {
                     cover: '',
                     data: [],
-                    videos: { data: [] },
+                    posts: { data: [] },
                     user: {}
                 }
             }
@@ -68,7 +68,7 @@
             getChannel() {
                 this.$Progress.start();
 
-                axios.get('/api/channels/' + this.id + '?videos=true' ).then((res) => {
+                axios.get('/api/channels/' + this.id + '?posts=true' ).then((res) => {
                     this.$Progress.finish();
                     this.channel = res.data;
 

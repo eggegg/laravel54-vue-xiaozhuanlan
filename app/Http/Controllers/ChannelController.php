@@ -60,9 +60,16 @@ class ChannelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-        return $this->model->with('user')->findOrFail($id);
+        $channel = $this->model->with('user')->findOrFail($id);
+
+        // check for videos
+        if( $request->has('posts') ) {
+            $channel->posts = $channel->posts()->with(['channel', 'category'])->latest()->paginate(8);
+        }
+
+        return $channel;
     }
 
     /**
