@@ -19,6 +19,7 @@
     "vue": "^2.1.10"
   },
   "dependencies": {
-    "cross-env": "^5.1.1"
+    "cross-env": "^5.1.1",
+    "vue-router": "^3.0.1"
   }
 }

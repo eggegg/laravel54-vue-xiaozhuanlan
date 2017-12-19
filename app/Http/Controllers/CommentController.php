@@ -40,8 +40,8 @@ class CommentController extends Controller
         $comments = $this->model->with('user')->latest();
 
         // check for video_id in request
-        if ($vid =  $request->get('video_id') ) {
-            $comments = $comments->where('video_id' , $vid);
+        if ($vid =  $request->get('post_id') ) {
+            $comments = $comments->where('post_id' , $vid);
         }
 
         return $comments->paginate();
@@ -60,6 +60,8 @@ class CommentController extends Controller
 
         return $request->user()->comments()
             ->create( $request->only($this->model->getModel()->fillable));
+
+        return $this->model->with('user')->find($comment->id);
     }
 
     /**

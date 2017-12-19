@@ -31,9 +31,24 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return $this->model->with('user')->latest()->paginate();
+        $query = $this->model->with(['channel']);
+
+        // check for trending
+        if ( $request->has('trending')) {
+            $query->orderBy('views', 'desc');
+        }
+
+        // paginate the result
+        $paginated = $query->latest()->paginate()->toArray();
+
+        // check for categories
+        if ($request->has('categories')) {
+           $paginated['categories'] = Category::select('id', 'name')->get();
+        }
+
+        return $paginated;
     }
 
 
@@ -65,9 +80,19 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-        return $this->model->with('user')->findOrFail($id);
+        $video =  $this->model->with(['channel', 'category'])->findOrFail($id);
+        
+        // check related video requested
+        if( $request->has('related') ) {
+            $video->related = $this->model->with(['channel'])->inRandomOrder()->limit(16)->get();
+        }
+
+        // update view count
+        $video->increment('views');
+
+        return $video;
     }
 
 

@@ -12,9 +12,12 @@
                     </div>
                 </div>
 
-                <passport-clients></passport-clients>
-                <passport-authorized-clients></passport-authorized-clients>
-                <passport-personal-access-tokens></passport-personal-access-tokens>
+            <h4>OAuth Management</h4>
+
+            <passport-clients></passport-clients>
+            <passport-authorized-clients></passport-authorized-clients>
+            <passport-personal-access-tokens></passport-personal-access-tokens>
+
             </div>
         </div>
     </div>

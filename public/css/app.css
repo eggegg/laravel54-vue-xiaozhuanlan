@@ -8350,3 +8350,306 @@ button.close {
   }
 }
 
+.text-dark {
+  color: #333333;
+}
+
+.mt {
+  margin-top: 2em;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.spin {
+  -webkit-animation: spin 500ms infinite linear;
+          animation: spin 500ms infinite linear;
+}
+
+body {
+  padding-top: 50px;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+.navbar .navbar-brand span {
+  color: #bf5329;
+}
+
+.navbar .navbar-form {
+  width: 70%;
+}
+
+.navbar .navbar-form .form-group {
+  width: 80%;
+}
+
+.navbar .navbar-form .form-group .form-control {
+  width: 100%;
+}
+
+.navbar .navbar-form .btn.btn-search {
+  padding: 6px 26px;
+}
+
+.sub-nav {
+  padding: 0 .6em;
+  background-color: #FFF;
+  margin-bottom: 1em;
+}
+
+.sub-nav a {
+  color: #222222;
+  padding: .6em 1em;
+  margin: 0 .5em;
+  display: inline-block;
+  border-bottom: 2px solid transparent;
+}
+
+.sub-nav a:hover,
+.sub-nav a.active {
+  color: #3097D1;
+  text-decoration: none;
+  border-bottom: 2px solid #3097D1;
+}
+
+.video .thumbnail {
+  background-color: #f1f1f1;
+  padding: 0;
+  margin-bottom: .5em;
+  max-height: 141px;
+  overflow: hidden;
+}
+
+.video .thumbnail img {
+  margin: 0;
+  min-width: 168px;
+  min-height: 120px;
+}
+
+.video .caption h3 {
+  margin-right: 20px;
+  margin-top: 0;
+  font-size: 1.1em;
+  margin-bottom: 1px;
+  max-width: 196px;
+}
+
+.video .caption h3 a {
+  height: 2.6em;
+  display: block;
+  line-height: 1.3em;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.video .caption p {
+  font-size: .85em;
+  color: #919191;
+}
+
+.video .caption p a {
+  color: #000;
+}
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-aside .media-left img {
+  width: 168px;
+  height: 94px;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+.video-aside h3 {
+  margin-right: 20px;
+  margin-top: 0;
+  font-size: 1.1em;
+  margin-bottom: 1px;
+  max-width: 196px;
+}
+
+.video-aside h3 a {
+  height: 2.6em;
+  display: block;
+  line-height: 1.3em;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.video-aside p {
+  font-size: .85em;
+  color: #919191;
+}
+
+.video-aside p a {
+  color: #000;
+}
+
+.video-player {
+  margin-bottom: 22px;
+}
+
+.video-player .video-card {
+  min-height: 360px;
+  background-color: #f1f1f1;
+}
+
+.desc-text {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.video-desc h3 {
+  color: #222222;
+  margin-top: 0;
+}
+
+.video-desc .media-object {
+  height: 48px;
+  width: 48px;
+  background-color: #f1f1f1;
+}
+
+.video-desc .media-body {
+  color: #777777;
+}
+
+.video-desc .media-body .media-heading {
+  font-size: .9em;
+}
+
+.video-desc .btn-subscribe {
+  background-color: #5aacda;
+  border-color: #5aacda;
+}
+
+.video-desc .view-count h3 {
+  font-size: 1.3em;
+  color: #555555;
+  margin: 0;
+}
+
+.comment-thread h3 {
+  margin-right: 20px;
+  margin-top: 0;
+  font-size: 1.1em;
+  margin-bottom: 1px;
+  max-width: 196px;
+}
+
+.comment-thread h3 a {
+  height: 2.6em;
+  display: block;
+  line-height: 1.3em;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.comment-thread p {
+  font-size: .85em;
+  color: #919191;
+}
+
+.comment-thread p a {
+  color: #000;
+}
+
+.comment-thread h4 {
+  font-size: 1em;
+}
+
+.video-footer {
+  border-top: 1px solid #eeeeee;
+}
+
+.video-footer a {
+  margin: 0 1em;
+  color: #777777;
+}
+
+.video-footer a:hover {
+  text-decoration: none;
+  color: #333333;
+}
+
+.panel-cover {
+  position: relative;
+  min-height: 320px;
+  background-repeat: no-repeat;
+  background-color: #133d55;
+  background-size: cover;
+}
+
+.panel-cover .media {
+  position: absolute;
+  bottom: 2em;
+  left: 2em;
+}
+
+.panel-cover .media .media-heading {
+  color: #eeeeee;
+  text-shadow: 1px 1px 2px #333333;
+}
+
+.comment-thread .media,
+.comment-thread .media-body {
+  overflow: visible;
+}
+
+.comment-thread .dropdown button {
+  border: none;
+}
+
+.comment-thread .dropdown .dropdown-menu .glyphicon {
+  margin-right: 6px;
+}
+
