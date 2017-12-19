@@ -45477,10 +45477,16 @@ if (false) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_page_ChannelPage_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_page_ChannelPage_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_page_VideoDetailPage_vue__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_page_VideoDetailPage_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_page_VideoDetailPage_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_page_UploadPage_vue__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_page_UploadPage_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_page_UploadPage_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_page_AccountPage_vue__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_page_AccountPage_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_page_AccountPage_vue__);
 
 
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
+
+
 
 
 
@@ -45512,6 +45518,30 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
         name: 'VideoDetailPage',
         component: __WEBPACK_IMPORTED_MODULE_6__components_page_VideoDetailPage_vue___default.a,
         props: true
+    }, {
+        path: '/upload',
+        name: 'UploadPage',
+        component: __WEBPACK_IMPORTED_MODULE_7__components_page_UploadPage_vue___default.a,
+        beforeEnter: function beforeEnter(to, from, next) {
+            if (window.Laravel.hasOwnProperty('Auth')) {
+                next(true);
+            } else {
+                next(false);
+                alert('Please login to upload a video');
+            }
+        }
+    },, {
+        path: '/account',
+        name: 'AccountPage',
+        component: __WEBPACK_IMPORTED_MODULE_8__components_page_AccountPage_vue___default.a,
+        beforeEnter: function beforeEnter(to, from, next) {
+            if (window.Laravel.hasOwnProperty('Auth')) {
+                next(true);
+            } else {
+                next(false);
+                alert('Please login to access your account page.');
+            }
+        }
     }]
 }));
 
@@ -48417,6 +48447,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -48441,14 +48492,78 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
+        _c("div", { staticClass: "col-md-12" }, [
           _c("div", { staticClass: "panel panel-default" }, [
-            _c("div", { staticClass: "panel-heading" }, [
-              _vm._v("Example Component")
+            _c("div", { staticClass: "panel-body" }, [
+              _c("p", { staticClass: "alert alert-info text-center" }, [
+                _vm._v(
+                  "I am leaving subscription system up to you to develop. If you need any help let me know in comments."
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "media" }, [
+                _c("div", { staticClass: "media-left media-middle" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("img", {
+                      staticClass: "media-object",
+                      attrs: {
+                        width: "94",
+                        src: "/img/avatar-placeholder.jpg",
+                        alt: "..."
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "media-body" }, [
+                  _c("h4", { staticClass: "media-heading" }, [
+                    _c("a", { attrs: { href: "" } }, [_vm._v("Channel")])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "btn-group btn-group-sm",
+                      attrs: { role: "group", "aria-label": "..." }
+                    },
+                    [
+                      _c(
+                        "button",
+                        { staticClass: "btn btn-subscribe btn-primary" },
+                        [
+                          _c("span", {
+                            staticClass: "glyphicon glyphicon-play"
+                          }),
+                          _vm._v(" UnSubscribe")
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-default",
+                          attrs: { disabled: "" }
+                        },
+                        [_vm._v("56,454")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("p", [
+                    _vm._v(
+                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut commodi eveniet illo inventore molestiae neque nihil odio officiis, sunt voluptatum? Aut consequatur labore molestiae possimus quia sapiente veniam! Alias, quibusdam."
+                    )
+                  ])
+                ])
+              ])
             ]),
             _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
             _c("div", { staticClass: "panel-body" }, [
-              _vm._v("\n                    Subcription page\n                ")
+              _vm._v(
+                "\n                    List of Video from this Channel\n                "
+              )
             ])
           ])
         ])
@@ -50087,6 +50202,682 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-c1b8e276", module.exports)
+  }
+}
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(92)
+/* template */
+var __vue_template__ = __webpack_require__(93)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\page\\UploadPage.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5df6db36", Component.options)
+  } else {
+    hotAPI.reload("data-v-5df6db36", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(94)
+/* template */
+var __vue_template__ = __webpack_require__(95)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\page\\AccountPage.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6a347046", Component.options)
+  } else {
+    hotAPI.reload("data-v-6a347046", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 92 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            video: {},
+            videos: {
+                data: []
+            },
+            categories: [],
+            loading: false,
+            videoThumb: '/img/video-thumb-placeholder.png'
+        };
+    },
+    mounted: function mounted() {
+        this.getVideoAndCategories();
+        console.log('Upload Component mounted.');
+    },
+
+
+    methods: {
+        getVideoAndCategories: function getVideoAndCategories() {
+            var _this = this;
+
+            this.$Progress.start();
+            // change the title of page
+            window.document.title = 'Upload a Video on QTube';
+
+            axios.get('/api/posts?trending=true&categories=true').then(function (res) {
+                _this.$Progress.finish();
+                _this.videos = res.data;
+                _this.categories = res.data.categories;
+            }).catch(function (err) {
+                _this.$Progress.finish();
+                console.log(err);
+            });
+        },
+        uploadVideo: function uploadVideo() {
+            var vm = this;
+            vm.loading = true;
+
+            // add other fields
+            vm.video.thumbnail = vm.videoThumb;
+            vm.video.channel_id = vm.$root.channel.id;
+
+            axios.post('/api/posts', vm.video).then(function (res) {
+                vm.video = {};
+                vm.loading = false;
+                alert('Video has been uploaded, Go to home page to see it.');
+            }).catch(function (error) {
+                console.log(error);
+                vm.loading = false;
+            });
+        },
+        validateYoutubeUrl: function validateYoutubeUrl() {
+            var videoCode = this.isYoutube(this.video.url);
+            if (videoCode) {
+                this.videoThumb = 'http://img.youtube.com/vi/' + videoCode + '/mqdefault.jpg';
+            } else {
+                alert('URL is not a valid youtube video url.');
+            }
+        },
+        isYoutube: function isYoutube(url) {
+            var pattern = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+            var matches = url.match(pattern);
+            if (matches) {
+                return matches[1];
+            }
+            return false;
+        }
+    }
+});
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-10 col-md-offset-1" }, [
+        _c("div", { staticClass: "panel panel-default" }, [
+          _c("div", { staticClass: "panel-heading" }, [
+            _vm._v("Upload a Video")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel-body" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-md-8" }, [
+                _c(
+                  "form",
+                  {
+                    staticClass: "form-horizontal",
+                    attrs: { method: "post" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        _vm.uploadVideo()
+                      }
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-sm-2 control-label",
+                          attrs: { for: "category" }
+                        },
+                        [_vm._v("Category")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-10" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.video.category_id,
+                                expression: "video.category_id"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              required: "",
+                              name: "category",
+                              id: "category"
+                            },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.video,
+                                  "category_id",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          _vm._l(_vm.categories, function(cat) {
+                            return _c(
+                              "option",
+                              { domProps: { value: cat.id } },
+                              [_vm._v(_vm._s(cat.name))]
+                            )
+                          })
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-sm-2 control-label",
+                          attrs: { for: "url" }
+                        },
+                        [_vm._v("Video URL")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-10" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.video.url,
+                              expression: "video.url"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            required: "",
+                            type: "url",
+                            id: "url",
+                            placeholder: "YouTube video url"
+                          },
+                          domProps: { value: _vm.video.url },
+                          on: {
+                            blur: function($event) {
+                              _vm.validateYoutubeUrl()
+                            },
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.video, "url", $event.target.value)
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-sm-2 control-label",
+                          attrs: { for: "title" }
+                        },
+                        [_vm._v("Title")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-10" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.video.title,
+                              expression: "video.title"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            required: "",
+                            type: "text",
+                            id: "title",
+                            placeholder: "Title of Video"
+                          },
+                          domProps: { value: _vm.video.title },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.video, "title", $event.target.value)
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-sm-2 control-label",
+                          attrs: { for: "desc" }
+                        },
+                        [_vm._v("Description")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-10" }, [
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.video.description,
+                              expression: "video.description"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            minlength: "10",
+                            required: "",
+                            id: "desc",
+                            placeholder: "Description for video"
+                          },
+                          domProps: { value: _vm.video.description },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.video,
+                                "description",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("div", { staticClass: "col-sm-offset-2 col-sm-10" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-info",
+                            attrs: { disabled: _vm.loading, type: "submit" }
+                          },
+                          [
+                            _c("span", {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.loading,
+                                  expression: "loading"
+                                }
+                              ],
+                              staticClass: "glyphicon glyphicon-refresh spin"
+                            }),
+                            _vm._v(
+                              " Upload\n                                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-default",
+                            attrs: { type: "reset", disabled: _vm.loading }
+                          },
+                          [_vm._v("Cancel")]
+                        )
+                      ])
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-4" }, [
+                _c("img", {
+                  staticClass: "img-responsive",
+                  attrs: { src: _vm.videoThumb, alt: "" }
+                })
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel-heading" }, [
+            _vm._v("Trending Videos")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "panel-body" },
+            [_c("video-thumb", { attrs: { list: _vm.videos.data } })],
+            1
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "alert text-center alert-warning" }, [
+      _vm._v("Choose a Category & Paste "),
+      _c(
+        "a",
+        { attrs: { href: "https://www.youtube.com/", target: "_blank" } },
+        [_vm._v("Youtube")]
+      ),
+      _vm._v(" video link.")
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-5df6db36", module.exports)
+  }
+}
+
+/***/ }),
+/* 94 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        console.log('Component mounted.');
+    }
+});
+
+/***/ }),
+/* 95 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row mt" }, [
+      _c(
+        "div",
+        { staticClass: "col-md-10" },
+        [
+          _c("div", { staticClass: "panel panel-default" }, [
+            _c("div", { staticClass: "panel-heading" }, [
+              _vm._v("Latest Videos")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "panel-body" },
+              [
+                _c("video-thumb", { attrs: { list: _vm.$root.auth.Videos } }),
+                _vm._v(" "),
+                !_vm.$root.auth.Videos.length
+                  ? _c("p", { staticClass: "text-center" }, [
+                      _vm._v("You don't have any video uploaded yet.")
+                    ])
+                  : _vm._e()
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("h4", [_vm._v("OAuth Management")]),
+          _vm._v(" "),
+          _c("passport-clients"),
+          _vm._v(" "),
+          _c("passport-authorized-clients"),
+          _vm._v(" "),
+          _c("passport-personal-access-tokens")
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-2" }, [
+        _c("div", { staticClass: "text-center mt" }, [
+          _c("img", {
+            staticClass: "img-circle",
+            attrs: { src: _vm.$root.auth.avatar, alt: _vm.$root.auth.name }
+          }),
+          _vm._v(" "),
+          _c("h4", [
+            _vm._v(_vm._s(_vm.$root.auth.name) + " "),
+            _c("br"),
+            _vm._v(" "),
+            _c("small", [_vm._v(_vm._s(_vm.$root.auth.email))])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-6a347046", module.exports)
   }
 }
 

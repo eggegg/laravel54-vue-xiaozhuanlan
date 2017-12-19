@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Category;
 use App\Repos\Repository;
 use App\API\ApiHelper;
 use Illuminate\Http\Request;
