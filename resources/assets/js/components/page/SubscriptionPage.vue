@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <p class="alert alert-info text-center">I am leaving subscription system up to you to develop. If you need any help let me know in comments.</p>
+                        <p class="alert alert-info text-center">订阅的频道列表</p>
                         <div class="media">
                             <div class="media-left media-middle">
                                 <a href="#">
@@ -27,7 +27,7 @@
                     </div>
                     <hr>
                     <div class="panel-body">
-                        List of Video from this Channel
+                        List of Posts from this Channel
                     </div>
                 </div>
             </div>

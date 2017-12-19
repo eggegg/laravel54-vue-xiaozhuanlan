@@ -39,7 +39,8 @@ Vue.component('video-thumb', require('./components/VideoThumb.vue'));
 /**
  * Vue Progress bar to show youtube like progress bar on ajax calls
  */
-import VueProgressBar from 'vue-progressbar'
+import VueProgressBar from 'vue-progressbar';
+
 Vue.use(VueProgressBar, {
     color: '#ce1126',
     failedColor: 'red',

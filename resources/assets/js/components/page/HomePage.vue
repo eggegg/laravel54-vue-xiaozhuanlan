@@ -4,23 +4,14 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Recommended
+                        推荐
                     </div>
-                    <div class="panel-body">
-                        <video-thumb :list="videos.data"></video-thumb>
-                    </div>
-                </div>
-
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Recently uploaded
-                    </div>
-
                     <div class="panel-body">
                         <video-thumb :list="videos.data"></video-thumb>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </template>

@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="sub-nav text-center" v-cloak="">
-        <router-link active-class="active" :to="{ name: 'HomePage'}" exact>Home</router-link>
-        <router-link active-class="active" :to="{ name: 'TrendingPage'}">Trending</router-link>
-        <router-link active-class="active" :to="{ name: 'SubscriptionPage'}">Subscriptions</router-link>
+        <router-link active-class="active" :to="{ name: 'HomePage'}" exact>首页</router-link>
+        <router-link active-class="active" :to="{ name: 'TrendingPage'}">发现</router-link>
+        <router-link active-class="active" :to="{ name: 'SubscriptionPage'}">我的订阅</router-link>
     </div>
 
     <router-view>

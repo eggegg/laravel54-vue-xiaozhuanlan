@@ -12196,6 +12196,7 @@ Vue.component('video-thumb', __webpack_require__(60));
  * Vue Progress bar to show youtube like progress bar on ajax calls
  */
 
+
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_progressbar___default.a, {
     color: '#ce1126',
     failedColor: 'red',
@@ -45742,7 +45743,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
                 alert('Please login to upload a video');
             }
         }
-    },, {
+    }, {
         path: '/account',
         name: 'AccountPage',
         component: __WEBPACK_IMPORTED_MODULE_8__components_page_AccountPage_vue___default.a,
@@ -48458,15 +48459,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -48506,20 +48498,7 @@ var render = function() {
       _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "panel panel-default" }, [
           _c("div", { staticClass: "panel-heading" }, [
-            _vm._v("\n                    Recommended\n                ")
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "panel-body" },
-            [_c("video-thumb", { attrs: { list: _vm.videos.data } })],
-            1
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "panel panel-default" }, [
-          _c("div", { staticClass: "panel-heading" }, [
-            _vm._v("\n                    Recently uploaded\n                ")
+            _vm._v("\n                    推荐\n                ")
           ]),
           _vm._v(" "),
           _c(
@@ -48895,9 +48874,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "panel panel-default" }, [
             _c("div", { staticClass: "panel-body" }, [
               _c("p", { staticClass: "alert alert-info text-center" }, [
-                _vm._v(
-                  "I am leaving subscription system up to you to develop. If you need any help let me know in comments."
-                )
+                _vm._v("订阅的频道列表")
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "media" }, [
@@ -48961,7 +48938,7 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("div", { staticClass: "panel-body" }, [
               _vm._v(
-                "\n                    List of Video from this Channel\n                "
+                "\n                    List of Posts from this Channel\n                "
               )
             ])
           ])
@@ -50316,41 +50293,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             video: {},
-            videos: {
-                data: []
-            },
             categories: [],
             loading: false,
             videoThumb: '/img/video-thumb-placeholder.png'
         };
     },
     mounted: function mounted() {
-        this.getVideoAndCategories();
+        this.getCategories();
         console.log('Upload Component mounted.');
     },
 
 
     methods: {
-        getVideoAndCategories: function getVideoAndCategories() {
+        getCategories: function getCategories() {
             var _this = this;
 
             this.$Progress.start();
             // change the title of page
             window.document.title = 'Upload a Video on QTube';
 
-            axios.get('/api/posts?trending=true&categories=true').then(function (res) {
+            axios.get('/api/posts?categories=true').then(function (res) {
                 _this.$Progress.finish();
-                _this.videos = res.data;
                 _this.categories = res.data.categories;
             }).catch(function (err) {
                 _this.$Progress.finish();
@@ -50410,7 +50378,9 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "panel-body" }, [
-            _vm._m(0),
+            _c("p", { staticClass: "alert text-center alert-warning" }, [
+              _vm._v("发布文章")
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-md-8" }, [
@@ -50660,39 +50630,13 @@ var render = function() {
                 })
               ])
             ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "panel-heading" }, [
-            _vm._v("Trending Videos")
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "panel-body" },
-            [_c("video-thumb", { attrs: { list: _vm.videos.data } })],
-            1
-          )
+          ])
         ])
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "alert text-center alert-warning" }, [
-      _vm._v("Choose a Category & Paste "),
-      _c(
-        "a",
-        { attrs: { href: "https://www.youtube.com/", target: "_blank" } },
-        [_vm._v("Youtube")]
-      ),
-      _vm._v(" video link.")
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

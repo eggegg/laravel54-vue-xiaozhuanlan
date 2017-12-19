@@ -55,7 +55,6 @@ export default new Router({
                 }
             }
         },
-        ,
         {
             path: '/account',
             name: 'AccountPage',

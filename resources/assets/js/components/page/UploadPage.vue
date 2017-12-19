@@ -4,11 +4,11 @@
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
 
-                    <div class="panel-heading">Upload a Video</div>
+                    <div class="panel-heading">发布文章</div>
 
                     <div class="panel-body">
 
-                        <p class="alert text-center alert-warning">Choose a Category &amp; Paste <a href="https://www.youtube.com/" target="_blank">Youtube</a> video link.</p>
+                        <p class="alert text-center alert-warning"></p>
 
                         <div class="row">
                             <div class="col-md-8">
@@ -63,12 +63,7 @@
                         </div>
                     </div>
 
-                    <div class="panel-heading">Trending Videos</div>
 
-                    <div class="panel-body">
-                        <video-thumb :list="videos.data"></video-thumb>
-                    </div>
-                    <!-- End Latest videos -->
                 </div>
             </div>
         </div>
@@ -80,9 +75,6 @@
         data() {
             return {
                 video: {},
-                videos: {
-                    data: []
-                },
                 categories: [],
                 loading: false,
                 videoThumb: '/img/video-thumb-placeholder.png'
@@ -90,19 +82,18 @@
         },
 
         mounted() {
-            this.getVideoAndCategories();
+            this.getCategories();
             console.log('Upload Component mounted.')
         },
 
         methods: {
-            getVideoAndCategories() {
+            getCategories() {
                 this.$Progress.start();
                 // change the title of page
                 window.document.title = 'Upload a Video on QTube';
 
-                axios.get('/api/posts?trending=true&categories=true').then((res) => {
+                axios.get('/api/posts?categories=true').then((res) => {
                     this.$Progress.finish();
-                    this.videos = res.data;
                     this.categories = res.data.categories;
                 }).catch((err) => {
                     this.$Progress.finish();
