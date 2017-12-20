@@ -4,10 +4,7 @@
             <!-- Main content -->
             <div class="" style="width:660px;margin: 0 auto;overflow: hidden;">
                 <div class="video-player">
-                    <div v-if="youtubeId" class="videoWrapper">
-                        <iframe width="560" height="349" :src="'http://www.youtube.com/embed/' + youtubeId + '?rel=0&hd=1&autoplay=1&showinfo=0'" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                    <div v-if="!youtubeId"  class="video-card">
+                    <div class="video-card">
                         <img class="img-responsive" :src="videoThumb(video.thumbnail)" alt="">
                     </div>
                 </div>

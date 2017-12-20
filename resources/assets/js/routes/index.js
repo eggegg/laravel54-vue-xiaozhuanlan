@@ -13,7 +13,7 @@ import UploadPage from '../components/page/UploadPage.vue'
 import AccountPage from '../components/page/AccountPage.vue'
 
 export default new Router({
-    // mode: 'history', // to enable html5 history api
+    mode: 'history', // to enable html5 history api
     routes: [
         {
             path: '/',

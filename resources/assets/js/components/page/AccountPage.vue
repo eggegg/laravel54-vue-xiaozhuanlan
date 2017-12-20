@@ -3,11 +3,11 @@
         <div class="row mt">
             <div class="col-md-10">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Latest Videos</div>
+                    <div class="panel-heading">Latest Posts</div>
 
                     <div class="panel-body">
-                        <video-thumb :list="$root.auth.Videos"></video-thumb>
-                        <p v-if="!$root.auth.Videos.length" class="text-center">You don't have any video uploaded yet.</p>
+                        <video-thumb :list="$root.auth.Posts"></video-thumb>
+                        <p v-if="!$root.auth.Posts.length" class="text-center">You don't have any video uploaded yet.</p>
                     </div>
                 </div>
 

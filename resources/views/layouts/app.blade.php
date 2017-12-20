@@ -19,7 +19,7 @@
 
         @if(Auth::check())
             window.Laravel.Auth = {!! json_encode( Auth::user() ) !!};
-            window.Laravel.Auth.Videos = {!! json_encode( Auth::user()->posts()->with(['channel'])->limit(4)->latest()->get() ) !!};
+            window.Laravel.Auth.Posts = {!! json_encode( Auth::user()->posts()->with(['channel'])->limit(4)->latest()->get() ) !!};
             window.Laravel.Channel = {!! json_encode( Auth::user()->channels()->select('id', 'name', 'logo')->first() ) !!};
         @endif
     </script>
